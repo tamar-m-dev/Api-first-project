@@ -26,6 +26,7 @@ namespace api_1
 
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
+            //UseDefaultFiles and UseStaticFiles are called twice here. Once each (the lines above) is enough
             app.UseDefaultFiles();
 
             app.UseStaticFiles();

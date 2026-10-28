@@ -28,12 +28,14 @@ namespace api_1.Controllers
                 {
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.id == id)
-                        Ok(user);
+                        //fix: "return" was missing, so the user was never sent back and GET always ended with NotFound (404)
+                        return Ok(user);
                 }
             }
             return NotFound();
         }
-        static string filePath = "User.txt";
+        //fix: The path never changes, so it can be readonly
+        static readonly string filePath = "User.txt";
         // POST api/<ValuesController>
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
@@ -49,7 +51,9 @@ namespace api_1.Controllers
             System.IO.File.AppendAllText(filePath, userJson + Environment.NewLine);
             return CreatedAtAction(nameof(Get), new { id = user.id },user);
         }
+        //The assignment asks a wrong login to return NoContent() (204)
         [HttpPost("login")]
+        //Clearer names than user1 and user2 would help, for example loginUser and userInFile
         public ActionResult<User> Login([FromBody] logUser user1)
         {
             using (StreamReader reader = System.IO.File.OpenText(filePath))
@@ -69,6 +73,7 @@ namespace api_1.Controllers
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put(int id, [FromBody] User user1)
         {
             string textToReplace = string.Empty;
@@ -80,11 +85,17 @@ namespace api_1.Controllers
 
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.id == id)
+                    {
                         textToReplace = currentUserInFile;
+                        //fix: Found- break
+                        break;
+                    }
                 }
             }
             if (textToReplace != string.Empty)
             {
+                //fix: Keep the id, otherwise the updated user is saved without it
+                user1.id = id;
                 string text = System.IO.File.ReadAllText(filePath);
                 text = text.Replace(textToReplace,JsonSerializer.Serialize(user1));
                 System.IO.File.WriteAllText(filePath, text);
