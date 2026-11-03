@@ -1,0 +1,12 @@
+{"id":0,"name":"\u05EA\u05DE\u05E8 \u05DB\u05E1\u05E4\u05D9","email":"caspirachel@gmail.com","password":"1234"}
+{"id":2,"name":"\u05DE\u05D9\u05DB\u05DC","email":"caspirachel@gmail.com","password":"12345"}
+{"id":3,"name":"\u05EA\u05DE\u05E8","email":"caspi@gmail.com","password":"1234"}
+{"id":4,"name":"\u05EA\u05DE\u05E8","email":"tamar@gmail.com","password":"1234"}
+{"id":5,"name":"\u05DE\u05D9\u05DB\u05DC","email":"michal@gmail.com","password":"1234"}
+{"id":6,"name":"\u05D0","email":"a@gmail.com","password":"1234"}
+{"id":7,"name":"c","email":"c@gmail.com","password":"1234"}
+{"id":8,"name":"chani","email":"chani@gmail.com","password":"1234"}
+{"id":9,"name":"\u05EA\u05DE\u05E8","email":"caspirachel@gmail.com","password":"1234"}
+{"id":10,"name":"\u05EA\u05DE\u05E8","email":"caspirachel@gmail.com","password":"1234"}
+{"id":11,"name":"\u05EA\u05DE\u05E8","email":"caspirachel@gmail.com","password":"1234"}
+{"id":12,"name":"\u05EA\u05DE\u05E8","email":"a@b.c","password":"1234www!!!"}

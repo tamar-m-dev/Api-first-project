@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script defer src="reg&log.js"></script>
+    <style>
+        body{
+            display:flex;
+            flex-direction:row;
+        }
+    </style>
+</head>
+<body>
+    <div class="Registration">
+        <div>שם משתמש</div>
+        <input id="reg-name" placeholder="הכנס שם משתמש">
+        <div>אימייל</div>
+        <input id="reg-email" placeholder="הכנס אימייל">
+        <div>סיסמא</div>
+        <input id="reg-password" type="password" placeholder="הכנס סיסמא">
+        <br>
+        <button onclick="CheckPass()">check password</button>
+        <div id="score"></div>
+        <br>
+        <progress id="pass" max="4" value="0">חוזק הסיסמא</progress>
+        <br>
+        <button onclick="Register()">הרשמה</button>
+    </div>
+    <div class="Login">
+        <div>אימייל</div>
+        <input id="log-email" placeholder="הכנס אימייל" type="email">
+        <div>סיסמא</div>
+        <input id="log-password" type="password" placeholder="הכנס סיסמא">
+        <button onclick="Login()">כניסה</button>
+    </div>
+</body>
+</html>
