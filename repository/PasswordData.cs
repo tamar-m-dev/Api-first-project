@@ -1,8 +1,8 @@
 ﻿using Zxcvbn;
 
-namespace repository
+namespace api_1.repository
 {
-    public class PasswordData
+    public class PasswordData : IPasswordData
     {
         public int PDCheckPassword(string password)
         {

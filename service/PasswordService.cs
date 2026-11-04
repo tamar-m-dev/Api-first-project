@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using repository;
+using api_1.repository;
 
-namespace service
+namespace api_1.service
 {
-    public class PasswordService
+    public class PasswordService : IPasswordService
     {
-        private PasswordData PD= new PasswordData();
+        private IPasswordData PD;
+        public PasswordService(IPasswordData PD)
+        {
+            this.PD = PD;
+        }
         public int CheckPassword(string password)
         {
             return PD.PDCheckPassword(password);

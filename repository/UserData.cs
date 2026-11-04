@@ -4,7 +4,7 @@ using Zxcvbn;
 
 namespace api_1.repository
 {
-    public class UserData
+    public class UserData : IUserData
     {
         static string filePath = @"C:\Users\Tamar\source\repos\tamar-m-dev\repository\User.txt";
         public User UDGetUsersById(int id)
@@ -40,7 +40,7 @@ namespace api_1.repository
         public User UDCreateUser(User user)
         {
             int score = Core.EvaluatePassword(user.password).Score;
-            if(score < 3)
+            if (score < 3)
             {
                 return null;
             }
