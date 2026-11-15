@@ -8,6 +8,7 @@ namespace api_1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //How does this controller get the user service? The assignment asks the API to call the Services project: which project references does the API have?
     public class UsersController : ControllerBase
     {
         // GET: api/<ValuesController>
@@ -27,6 +28,7 @@ namespace api_1.Controllers
                 while ((currentUserInFile = reader.ReadLine()) != null)
                 {
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
+                    //Is Ok(user) returned here? When the user is found, what should Get return?
                     if (user.id == id)
                         Ok(user);
                 }
@@ -49,6 +51,7 @@ namespace api_1.Controllers
             System.IO.File.AppendAllText(filePath, userJson + Environment.NewLine);
             return CreatedAtAction(nameof(Get), new { id = user.id },user);
         }
+        //The assignment asks a login with a wrong password to return 204 NoContent. What does this return when the details are wrong?
         [HttpPost("login")]
         public ActionResult<User> Login([FromBody] logUser user1)
         {
@@ -69,6 +72,7 @@ namespace api_1.Controllers
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put(int id, [FromBody] User user1)
         {
             string textToReplace = string.Empty;

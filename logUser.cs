@@ -2,6 +2,7 @@
 
 namespace api_1
 {
+    //In C#, class names are PascalCase: LogUser, in a file named LogUser.cs
     public class logUser
     {
         [EmailAddress,Required]

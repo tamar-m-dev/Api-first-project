@@ -8,6 +8,7 @@ namespace api_1.service
     public class PasswordService : IPasswordService
     {
         private IPasswordData PD;
+        //Who gives the service an IPasswordData? The assignment asks to register it in Program.cs (AddScoped)
         public PasswordService(IPasswordData PD)
         {
             this.PD = PD;

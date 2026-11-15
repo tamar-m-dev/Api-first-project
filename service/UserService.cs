@@ -5,6 +5,7 @@ namespace api_1.service;
 public class UserService : IUserService
 {
     IUserData userData;
+    //Who gives the service an IUserData? The assignment asks to register it in Program.cs (AddScoped)
     public UserService(IUserData userData)
     {
         this.userData = userData;

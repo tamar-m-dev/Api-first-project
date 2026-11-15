@@ -6,6 +6,7 @@ namespace api_1.repository
 {
     public class UserData : IUserData
     {
+        //A full path on your disk (C:\...) only works on your computer: use a path relative to the project, so it runs on another computer too
         static string filePath = @"C:\Users\Tamar\source\repos\tamar-m-dev\repository\User.txt";
         public User UDGetUsersById(int id)
         {

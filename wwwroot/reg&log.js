@@ -1,4 +1,5 @@
-﻿const CheckPass = async () => {
+﻿//In JavaScript, function names are camelCase: checkPass
+const CheckPass = async () => {
     const password = document.getElementById('reg-password').value;
     if (password != 0) {
         const passResponse = await fetch('api/passwords', {
