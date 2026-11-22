@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="api/api.csproj" />
+  <Project Path="entiti/entiti.csproj" />
+  <Project Path="repository/repository.csproj" />
+  <Project Path="service/service.csproj" />
+</Solution>
