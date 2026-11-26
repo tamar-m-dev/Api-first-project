@@ -1,7 +1,7 @@
-﻿using api.entiti;
+﻿using entiti;
 using Microsoft.AspNetCore.Mvc;
-using api.service;
-namespace api_1.Controllers
+using service;
+namespace Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -12,43 +12,32 @@ namespace api_1.Controllers
         {
             this.userService = userService;
         }
-        // GET: api/<UsersController>
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            List<User> users = userService.GetUsers();
-            if (users != null)
-            {
-                return Ok(users);
-            }
-            return NotFound();
-        }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            User user = userService.GetUsersById(id);
+            User user = await userService.GetUsersById(id);
             if (user != null)
             {
-                Ok(user);
+                return Ok(user);
             }
             return NotFound();
         }
 
         // POST api/<UsersController>
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User user)
+        public async Task<ActionResult<User>> Post([FromBody] User user)
         {
-            User createUser = userService.CreateUser(user);
+            User createUser = await userService.CreateUser(user);
             if (createUser == null)
                 return BadRequest("the password is not strong enough");
-            return CreatedAtAction(nameof(Get), new { id = createUser.id }, createUser);
+            return CreatedAtAction(nameof(Get), new { id = createUser.Id }, createUser);
         }
         [HttpPost("login")]
-        public ActionResult<User> Post([FromBody] logUser logUser)
+        public async Task<ActionResult<User>> Post([FromBody] logUser logUser)
         {
-            User user = userService.LoginUser(logUser);
+            User user = await userService.LoginUser(logUser);
             if (user != null)
             {
                 return Ok(user);
@@ -57,11 +46,12 @@ namespace api_1.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] User user)
+        public async Task<ActionResult> Put(int id, [FromBody] User user)
         {
+            user.Id = id;
             try
             {
-                userService.ChangeUser(id, user);
+                await userService.ChangeUser(id, user);
             }
             catch (Exception ex)
             {

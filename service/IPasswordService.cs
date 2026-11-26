@@ -1,4 +1,4 @@
-﻿namespace api.service
+﻿namespace service
 {
     public interface IPasswordService
     {

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.entiti;
+namespace entiti;
 public partial class User
 {
     public int Id { get; set; }

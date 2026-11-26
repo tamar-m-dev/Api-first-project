@@ -1,12 +1,11 @@
-﻿using api.entiti;
-namespace api.service
+﻿using entiti;
+namespace service
 {
     public interface IUserService
     {
-        void ChangeUser(int id, User user);
-        User CreateUser(User user);
-        List<User> GetUsers();
-        User GetUsersById(int id);
-        User LoginUser(logUser logUser);
+        Task ChangeUser(int id, User user);
+        Task<User> CreateUser(User user);
+        Task<User> GetUsersById(int id);
+        Task<User> LoginUser(logUser logUser);
     }
 }

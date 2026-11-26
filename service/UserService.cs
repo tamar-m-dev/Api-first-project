@@ -1,44 +1,43 @@
-﻿using api.entiti;
-using api.repository;
-namespace api.service
+﻿using Zxcvbn;
+using entiti;
+using repository;
+namespace service
 {
     public class UserService : IUserService
     {
-        IUserData userData;
-        public UserService(IUserData userData)
+        IUserRepository userData;
+        public UserService(IUserRepository userData)
         {
             this.userData = userData;
         }
-        public User GetUsersById(int id)
+        public async Task<User> GetUsersById(int id)
         {
-            return userData.UDGetUsersById(id);
+            return await userData.GetUsersById(id);
         }
 
-        public List<User> GetUsers()
+        public async Task<User> CreateUser(User user)
         {
-            return userData.UDGetUsers();
-        }
-
-        public User CreateUser(User user)
-        {
-            return userData.UDCreateUser(user);
-        }
-
-        public User LoginUser(logUser logUser)
-        {
-            return userData.UDLoginUser(logUser);
-        }
-
-        public void ChangeUser(int id, User user)
-        {
-            try
+            int score = Core.EvaluatePassword(user.Password).Score;
+            if (score < 3)
             {
-                userData.UDChangeUser(id, user);
+                return null;
             }
-            catch(Exception)
+            return await userData.CreateUser(user);
+        }
+
+        public async Task<User> LoginUser(logUser logUser)
+        {
+            return await userData.LoginUser(logUser);
+        }
+
+        public async Task ChangeUser(int id, User user)
+        {
+            int score = Core.EvaluatePassword(user.Password).Score;
+            if (score < 3)
             {
-                throw;
+                throw new Exception("bad password");
             }
+            await userData.ChangeUser(id, user);
         }
     }
 

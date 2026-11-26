@@ -1,16 +1,12 @@
-﻿using api.repository;
-namespace api.service
+﻿using entiti;
+using Zxcvbn;
+namespace service
 {
     public class PasswordService : IPasswordService
     {
-        private IPasswordData PD;
-        public PasswordService(IPasswordData PD)
-        {
-            this.PD = PD;
-        }
         public int CheckPassword(string password)
         {
-            return PD.PDCheckPassword(password);
+            return Core.EvaluatePassword(password).Score;
         }
     }
 }

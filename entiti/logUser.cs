@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace api.entiti
+namespace entiti
 {
     public class logUser
     {

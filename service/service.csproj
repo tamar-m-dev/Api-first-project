@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="zxcvbn-core" Version="7.0.92" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\entiti\entiti.csproj" />
     <ProjectReference Include="..\repository\repository.csproj" />
   </ItemGroup>
